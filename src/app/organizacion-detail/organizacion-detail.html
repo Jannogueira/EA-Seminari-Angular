@@ -1,0 +1,62 @@
+<a routerLink="/" class="btn back-btn">&larr; Volver a Organizaciones</a>
+
+@if (loading) {
+<p>Cargando detalles de la organización...</p>
+}
+
+@if (!loading && errorMsg) {
+<p class="error">{{ errorMsg }}</p>
+}
+
+@if (!loading && organizacion) {
+<div class="header">
+  <h2>{{ organizacion.name }}</h2><br>
+  <span class="muted">ID: {{ organizacion._id }}</span>
+</div>
+
+<div class="users-section card">
+  <div class="section-header">
+    <h3>Usuarios de la Organización</h3>
+    <button class="btn add-btn" (click)="toggleAddUsuario()">
+      {{ mostrarFormUsuario ? 'Cancelar' : '+ Añadir Usuario' }}
+    </button>
+  </div>
+
+  @if (mostrarFormUsuario) {
+  <div class="form-container">
+    <h4>Añadir Usuario Existente</h4>
+    <form [formGroup]="usuarioForm" (ngSubmit)="addUsuario()">
+      <div class="form-group">
+        <label>Selecciona un usuario:</label>
+        <select formControlName="usuarioId" class="form-select">
+          <option value="" disabled selected>-- Elige un usuario --</option>
+          @for (user of usuariosDisponibles; track user._id) {
+          <option [value]="user._id">{{ user.name }} ({{ user.email }})</option>
+          }
+        </select>
+      </div>
+
+      <button type="submit" class="btn submit-btn" [disabled]="usuarioForm.invalid">
+        Añadir a la Organización
+      </button>
+    </form>
+  </div>
+  }
+
+  @if (organizacion.usuarios && organizacion.usuarios.length > 0) {
+  <ul class="users-list">
+    @for (user of organizacion.usuarios; track $any(user)._id) {
+    <li class="user-item">
+      <div class="user-info">
+        <span class="user-name">👤 {{ $any(user).name }}</span>
+        <span class="user-email">✉️ {{ $any(user).email }}</span>
+      </div>
+      <button class="btn delete-btn" (click)="eliminarUsuario($any(user))">Quitar de la Organización</button>
+    </li>
+    }
+  </ul>
+  } @else {
+  <p class="empty-msg">No hay usuarios asignados a esta organización.</p>
+  }
+</div>
+}

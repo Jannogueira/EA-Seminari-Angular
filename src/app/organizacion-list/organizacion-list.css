@@ -29,17 +29,29 @@ h2 {
   font-size: 12px;
 }
 
+.action-buttons {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
 .btn {
   background: white;
   border: 1px solid #ddd;
   padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 14px;
+  color: #111;
+  text-decoration: none;
 }
 .btn:hover {
   background: #f3f3f3;
 }
 
-.delete-btn {
-  margin-left: 8px;
-}
+

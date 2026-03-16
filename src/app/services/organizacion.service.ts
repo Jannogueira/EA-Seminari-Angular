@@ -28,6 +28,13 @@ export class OrganizacionService {
     );
   }
 
+  //Función: obtener organización con usuarios
+  getOrganizacionConUsuarios(id: string): Observable<Organizacion> {
+    return this.http.get<Organizacion>(
+      `${this.baseUrl}/organizaciones/${id}/users`
+    );
+  }
+
   //Función: crear nueva organización
   createOrganizacion(name: string): Observable<Organizacion> {
     return this.http.post<Organizacion>(

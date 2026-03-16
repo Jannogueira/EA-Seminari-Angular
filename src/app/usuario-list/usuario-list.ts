@@ -36,8 +36,8 @@ export class UsuarioList implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-      organizacion: ['', Validators.required],
-    });
+      organizacion: [''],
+    }, { validators: this.passwordsMatchValidator.bind(this) });
 
     this.searchControl = new FormControl('');
 
@@ -194,11 +194,13 @@ editar(user: Usuario): void {
   this.editando = true;
   this.usuarioEditId = user._id;
 
+  const orgId = typeof user.organizacion === 'string' 
+      ? user.organizacion 
+      : ((user.organizacion as Organizacion)?._id || '');
+
   this.usuarioForm.patchValue({
     name: user.name,
-    organizacion: typeof user.organizacion === 'string'
-      ? user.organizacion
-      : (user.organizacion as Organizacion)?._id
+    organizacion: orgId
   });
 }
 //Función: resetear formulario

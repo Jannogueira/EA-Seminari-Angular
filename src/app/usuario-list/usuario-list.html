@@ -30,7 +30,7 @@
     <div style="margin-bottom: 10px;">
       <label>Organización:</label>
       <select formControlName="organizacion" style="width: 100%; padding: 5px;">
-        <option value="" disabled selected>Selecciona una organización</option>
+        <option value="">-- Ninguna --</option>
         <option *ngFor="let o of organizaciones" [value]="o._id">{{ o.name }}</option>
       </select>
     </div>

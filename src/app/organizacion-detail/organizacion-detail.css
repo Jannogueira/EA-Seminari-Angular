@@ -1,0 +1,162 @@
+.back-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #555;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 28px;
+  color: #111;
+}
+
+.muted {
+  color: #888;
+  font-size: 14px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 12px;
+}
+
+.section-header h3 {
+  margin: 0;
+}
+
+.btn {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background: #f8f8f8;
+}
+
+.add-btn {
+  background: #111;
+  color: white;
+  border: none;
+}
+
+.add-btn:hover {
+  background: #333;
+}
+
+.submit-btn {
+  background: #111;
+  color: white;
+  border: none;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background: #333;
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.delete-btn {
+  color: #ff4d4f;
+  border-color: #ffc9c9;
+}
+
+.delete-btn:hover {
+  background: #fff1f0;
+}
+
+.form-container {
+  background: #fafafa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  border: 1px solid #eaeaea;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background: white;
+}
+
+.users-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #fcfcfc;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.user-email {
+  font-size: 13px;
+  color: #666;
+}
+
+.empty-msg {
+  text-align: center;
+  color: #888;
+  padding: 30px 0;
+  font-style: italic;
+}

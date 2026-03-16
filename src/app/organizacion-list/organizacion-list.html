@@ -1,11 +1,7 @@
 <h2>Organizaciones</h2>
 
 <!-- Buscador: buscar por nombre -->
-<p> <input
-  type="text"
-  [formControl]="searchControl"
-  placeholder="Buscar por nombre..."
-/> </p>
+<p> <input type="text" [formControl]="searchControl" placeholder="Buscar por nombre..." /> </p>
 
 <!-- Mensajes de estado -->
 <p *ngIf="loading">Cargando...</p>
@@ -14,41 +10,33 @@
 <!-- Mensaje si no hay organizaciones -->
 <ul class="list" *ngIf="!loading && !errorMsg && organizaciones.length > 0">
   <!-- Lista de organizaciones -->
-  <li class="card" *ngFor="let org of organizacionesVisibles; trackBy: trackById"> 
-    
+  <li class="card" *ngFor="let org of organizacionesVisibles; trackBy: trackById">
+
     <!-- Nombre con truncado si supera de 15 caracteres y botón para expandir -->
     <div>
       <span class="name">
-      {{
-        expanded[org._id] || org.name.length <= 15
-          ? org.name
-          : (org.name | slice:0:15) + '...'
-      }}
-      </span>
+        {{
+        expanded[org._id] || org.name.length <= 15 ? org.name : (org.name | slice:0:15) + '...' }} </span>
 
-      <!-- Botón para mostrar más o menos si el nombre es largo -->
-      <button *ngIf="org.name.length > 15"
-              class="btn"
-              (click)="toggleExpand(org._id)">
-        {{ expanded[org._id] ? 'Mostrar menos' : 'Mostrar más' }}
-      </button>
+          <!-- Botón para mostrar más o menos si el nombre es largo -->
+          <button *ngIf="org.name.length > 15" class="btn" (click)="toggleExpand(org._id)">
+            {{ expanded[org._id] ? 'Mostrar menos' : 'Mostrar más' }}
+          </button>
+
+          <div class="muted">{{ org._id }}</div>
     </div>
 
-    <!-- ID y botones de acción -->
-    <div>
-      <span class="muted">{{ org._id }}</span>
+    <!-- Botones de acción -->
+    <div class="action-buttons">
+      <a class="btn details-btn" [routerLink]="['/organizaciones', org._id]">Ver Detalles</a>
 
       <!-- BOTÓN EDITAR -->
-      <button type="button"
-              class="btn"
-              (click)="editar(org)">
+      <button type="button" class="btn" (click)="editar(org)">
         Editar
       </button>
 
       <!-- BOTÓN ELIMINAR -->
-      <button type="button"
-              class="btn delete-btn"
-              (click)="confirmDelete(org._id, org.name)">
+      <button type="button" class="btn delete-btn" (click)="confirmDelete(org._id, org.name)">
         X
       </button>
     </div>
@@ -57,17 +45,11 @@
 </ul>
 
 <!-- Botones para mostrar más/menos organizaciones si supera el limite -->
-<button 
-  *ngIf="!mostrarTodasOrganizaciones && organizaciones.length > limite"
-  class="btn"
-  (click)="mostrarMas()">
+<button *ngIf="!mostrarTodasOrganizaciones && organizaciones.length > limite" class="btn" (click)="mostrarMas()">
 
   Mostrar más
 </button>
-<button 
-  *ngIf="mostrarTodasOrganizaciones"
-  class="btn"
-  (click)="mostrarTodasOrganizaciones = false">
+<button *ngIf="mostrarTodasOrganizaciones" class="btn" (click)="mostrarTodasOrganizaciones = false">
 
   Mostrar menos
 </button>
@@ -77,24 +59,29 @@
 </p>
 
 <!-- Formulario para añadir/editar organización -->
-<button type="button" class="btn" (click)="mostrarFormulario()">
-  Añadir
+<button *ngIf="!mostrarForm" type="button" class="btn" (click)="mostrarFormulario()">
+  Añadir Nueva Organización
 </button>
 
-<div *ngIf="mostrarForm" class="card">
+<div *ngIf="mostrarForm" class="card form-container" style="margin-top: 20px; display: block; background: #fafafa; padding: 20px;">
 
-  <h3>{{ editando ? 'Editar Organización' : 'Nueva Organización' }}</h3>
+  <h3 style="margin-top: 0;">{{ editando ? 'Editar Organización' : 'Nueva Organización' }}</h3>
 
   <form [formGroup]="organizacionForm" (ngSubmit)="guardar()">
 
-    <label>Nombre:</label>
-    <input type="text" formControlName="nombre" />
+    <div style="margin-bottom: 16px;">
+      <label style="display: block; font-weight: 500; margin-bottom: 6px;">Nombre:</label>
+      <input type="text" formControlName="nombre" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;" />
+    </div>
 
-    <button type="submit"
-            class="btn"
-            [disabled]="organizacionForm.invalid">
-      {{ editando ? 'Actualizar' : 'Guardar' }}
-    </button>
+    <div style="display: flex; gap: 10px;">
+      <button type="submit" class="btn" style="flex: 1; background: #111; color: white;" [disabled]="organizacionForm.invalid">
+        {{ editando ? 'Actualizar' : 'Guardar' }}
+      </button>
+      <button type="button" class="btn" (click)="resetForm()">
+        Cancelar
+      </button>
+    </div>
 
   </form>
 

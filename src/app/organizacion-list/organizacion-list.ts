@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { OrganizacionService } from '../services/organizacion.service';
 import { Organizacion } from '../models/organizacion.model';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
@@ -10,7 +11,7 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog';
 @Component({
   selector: 'app-organizacion-list',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatDialogModule],
+  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, RouterLink],
   templateUrl: './organizacion-list.html',
   styleUrls: ['./organizacion-list.css'],
 })
