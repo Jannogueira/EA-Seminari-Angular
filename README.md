@@ -1,4 +1,5 @@
-# MiniSpa
+# EJERCICIO ANGULAR - Jan Nogueira
+Uso de IA (Gemini 3.1 Pro) para arreglar errores del código y sobre todo para configurar la interfaz visual mas bonita y facil de interpretar.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
 

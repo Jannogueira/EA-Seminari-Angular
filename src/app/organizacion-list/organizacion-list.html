@@ -28,7 +28,7 @@
 
     <!-- Botones de acción -->
     <div class="action-buttons">
-      <a class="btn details-btn" [routerLink]="['/organizaciones', org._id]">Ver Detalles</a>
+      <button class="btn details-btn" [routerLink]="['/organizaciones', org._id]">Ver Detalles</button>
 
       <!-- BOTÓN EDITAR -->
       <button type="button" class="btn" (click)="editar(org)">
@@ -63,7 +63,8 @@
   Añadir Nueva Organización
 </button>
 
-<div *ngIf="mostrarForm" class="card form-container" style="margin-top: 20px; display: block; background: #fafafa; padding: 20px;">
+<div *ngIf="mostrarForm" class="card form-container"
+  style="margin-top: 20px; display: block; background: #fafafa; padding: 20px;">
 
   <h3 style="margin-top: 0;">{{ editando ? 'Editar Organización' : 'Nueva Organización' }}</h3>
 
@@ -71,11 +72,13 @@
 
     <div style="margin-bottom: 16px;">
       <label style="display: block; font-weight: 500; margin-bottom: 6px;">Nombre:</label>
-      <input type="text" formControlName="nombre" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;" />
+      <input type="text" formControlName="nombre"
+        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;" />
     </div>
 
     <div style="display: flex; gap: 10px;">
-      <button type="submit" class="btn" style="flex: 1; background: #111; color: white;" [disabled]="organizacionForm.invalid">
+      <button type="submit" class="btn" style="flex: 1; background: #111; color: white;"
+        [disabled]="organizacionForm.invalid">
         {{ editando ? 'Actualizar' : 'Guardar' }}
       </button>
       <button type="button" class="btn" (click)="resetForm()">
